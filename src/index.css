@@ -4,36 +4,16 @@
   --white: #fff;
   --black: #111;
   --blue: #3a80e9;
-  --grey: #888;
-  --darkgrey: #1b1b1b;
-  --green: #61c96f;
-  --red: #f94141;
 }
 
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
+html,
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
   background-color: var(--black);
-  /* cursor: url("https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png")
-      39 39,
-    auto; */
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-span {
   color: var(--white);
 }
 
@@ -44,7 +24,7 @@ span {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 0.2rem;
+  width: 0.5rem;
 }
 
 /* Track */
@@ -56,6 +36,7 @@ span {
 ::-webkit-scrollbar-thumb {
   background: var(--blue);
   border-radius: 1rem;
+  border: 2px solid var(--white);
 }
 
 /* Handle on hover */
@@ -69,9 +50,4 @@ img {
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
-}
-
-a {
-  text-decoration: none;
-  color: var(--white) !important;
 }
