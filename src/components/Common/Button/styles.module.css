@@ -1,0 +1,15 @@
+.btnDiv {
+    color: var(--white);
+    font-weight: 600;
+    text-transform: capitalize;
+    width: min-content;
+    padding: 0.5rem 1rem;
+    background-color: var(--blue);
+    border-radius: 2rem;
+    font-size: 0.8rem;
+  }
+  
+  .btnDiv:hover {
+    box-shadow: 5px 5px 10px rgba(58, 128, 233, 0.5);
+    transition: all 0.2s;
+  }
