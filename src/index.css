@@ -19,9 +19,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--black);
   color: var(--white);
-  overflow-y: scroll;
-  overflow-x: hidden;
-  max-height: 100vh;
 }
 
 ::selection {
