@@ -7,15 +7,21 @@
   --grey: #888;
 }
 
-html,
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
   background-color: var(--black);
   color: var(--white);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 100vh;
 }
 
 ::selection {

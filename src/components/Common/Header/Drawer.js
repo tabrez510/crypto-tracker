@@ -1,28 +1,28 @@
 import { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
-import styles from "./styles.module.css";
+import "./styles.css";
 
 export default function MobileDrawer() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={styles.drawerDiv}>
+    <div className="drawerDiv">
       <MenuRoundedIcon
-        className={styles.link}
+        className="link"
         style={{ fontSize: "1.5rem", margin: 0 }}
         onClick={() => setOpen(true)}
       />
       <Drawer anchor={"right"} open={open} onClose={() => setOpen(false)}>
-        <div className={styles.drawer}>
+        <div className="drawer">
           <a href="/">
-            <p className={styles.link}>Home</p>
+            <p className="link">Home</p>
           </a>
           <a href="/compare">
-            <p className={styles.link}>Compare</p>
+            <p className="link">Compare</p>
           </a>
           <a href="/dashboard">
-            <p className={styles.link}>Dashboard</p>
+            <p className="link">Dashboard</p>
           </a>
         </div>
       </Drawer>

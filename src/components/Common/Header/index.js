@@ -1,20 +1,20 @@
 import React from "react";
 import Button from "../Button/Button";
 import MobileDrawer from "./Drawer";
-import styles from "./styles.module.css";
+import "./styles.css";
 
 function Header() {
   return (
-    <div className={styles.navbar}>
-      <h1 className={styles.heading}>
+    <div className="navbar">
+      <h1 className="heading">
         CryptoTracker<span style={{ color: "var(--blue)" }}>.</span>
       </h1>
-      <div className={styles.links}>
+      <div className="links">
         <a href="/">
-          <p className={styles.link}>Home</p>
+          <p className="link">Home</p>
         </a>
         <a href="/compare">
-          <p className={styles.link}>Compare</p>
+          <p className="link">Compare</p>
         </a>
         <a href="/dashboard">
           <Button text="dashboard" />
