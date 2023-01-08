@@ -34,8 +34,8 @@ function LandingIntro() {
         </motion.p>
         <motion.div
           className={"flexBtn"}
-          initial={{ scale: 0, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
+          initial={{ x: -5, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.75 }}
         >
           <Button text="Dashboard" />
