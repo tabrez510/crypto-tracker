@@ -6,6 +6,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import { createTheme, ThemeProvider } from "@mui/material";
 import Grid from "../GridComponent/Grid";
 import "./styles.css";
+import List from "../ListComponent/List";
 export default function Tabs({ data }) {
   const [tabValue, setTabValue] = useState("grid");
 
@@ -47,7 +48,13 @@ export default function Tabs({ data }) {
               ))}
             </div>
           </TabPanel>
-          <TabPanel value={"list"}></TabPanel>
+          <TabPanel value={"list"}>
+            <table className="list-flex">
+              {data.map((item, i) => (
+                <List coin={item} />
+              ))}
+            </table>
+          </TabPanel>
         </TabContext>
       </ThemeProvider>
     </div>

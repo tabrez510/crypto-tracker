@@ -49,6 +49,8 @@
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--green);
+    min-width: 50px;
+    text-align: center;
   }
   
   .coin-chip:hover {
@@ -116,12 +118,12 @@
   }
   
   @media only screen and (max-width: 800px) {
-    .grid-box {
-      width: 100% !important;
-      align-items: center;
-      justify-content: center;
-    }
     .info-flex {
-      justify-content: center;
+      width: 80%;
+    }
+  
+    .coin-chip {
+      min-width: 0px;
+      padding: 0.25rem 0.5rem;
     }
   }
