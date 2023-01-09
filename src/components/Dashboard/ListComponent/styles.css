@@ -3,8 +3,14 @@
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    padding: 0rem 1rem;
-    margin: 1.5rem 0rem;
+    padding: 1rem;
+    margin: 1rem 0rem;
+    border-radius: 1rem;
+    cursor: pointer;
+  }
+  
+  .list-row:hover {
+    background-color: var(--darkgrey);
   }
   
   .list-row td {
@@ -73,7 +79,8 @@
   
   @media only screen and (max-width: 600px) {
     .list-row {
-      padding: 0rem;
+      padding: 0.5rem;
+      margin: 0.5rem 0rem;
       gap: 0.1rem;
     }
   }

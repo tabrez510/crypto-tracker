@@ -3,8 +3,9 @@ import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import "./styles.css";
 import { convertNumbers } from "../../../functions/convertNumber";
+import { motion } from "framer-motion";
 
-function List({ coin }) {
+function List({ coin, delay }) {
   const [volume, setVolume] = useState("");
 
   useEffect(() => {
@@ -12,7 +13,12 @@ function List({ coin }) {
   }, []);
 
   return (
-    <tr className="list-row">
+    <motion.tr
+      className="list-row"
+      initial={{ x: -10, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.3, delay: delay }}
+    >
       <td className="td-img">
         <img src={coin.image} className="coin-logo" />
       </td>
@@ -61,7 +67,7 @@ function List({ coin }) {
       <td className="td-vol-cap">
         <p>${volume}</p>
       </td>
-    </tr>
+    </motion.tr>
   );
 }
 
