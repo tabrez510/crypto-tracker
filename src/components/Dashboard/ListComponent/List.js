@@ -4,6 +4,7 @@ import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import "./styles.css";
 import { convertNumbers } from "../../../functions/convertNumber";
 import { motion } from "framer-motion";
+import Tooltip from "@mui/material/Tooltip";
 
 function List({ coin, delay }) {
   const [volume, setVolume] = useState("");
@@ -20,52 +21,71 @@ function List({ coin, delay }) {
       transition={{ duration: 0.3, delay: delay }}
     >
       <td className="td-img">
-        <img src={coin.image} className="coin-logo" />
+        <Tooltip title="Logo">
+          <img src={coin.image} className="coin-logo" />
+        </Tooltip>
       </td>
+
       <td className="td-name-flex">
         <div className="name-flex ">
-          <p className="coin-symbol name-text">{coin.symbol}-USD</p>
-          <p className="coin-name name-text">{coin.name}</p>
+          <Tooltip title="Symbol">
+            <p className="coin-symbol name-text">{coin.symbol}-USD</p>
+          </Tooltip>
+          <Tooltip title="Name">
+            <p className="coin-name name-text">{coin.name}</p>
+          </Tooltip>
         </div>
       </td>
       <td className="td-chip-flex">
         {coin.price_change_percentage_24h > 0 ? (
-          <div className="chip-flex">
-            <div className="coin-chip percentage-text">
-              {coin.price_change_percentage_24h.toFixed(2) + " %"}
+          <Tooltip title="Percentage Change in 24 Hours">
+            <div className="chip-flex">
+              <div className="coin-chip percentage-text">
+                {coin.price_change_percentage_24h.toFixed(2) + " %"}
+              </div>
+              <TrendingUpRoundedIcon className="icon chip-icon" />
             </div>
-            <TrendingUpRoundedIcon className="icon chip-icon" />
-          </div>
+          </Tooltip>
         ) : (
-          <div className="chip-flex">
-            <div className="coin-chip chip-red percentage-text">
-              {coin.price_change_percentage_24h.toFixed(2) + " %"}
+          <Tooltip title="Percentage Change in 24 Hours">
+            <div className="chip-flex">
+              <div className="coin-chip chip-red percentage-text">
+                {coin.price_change_percentage_24h.toFixed(2) + " %"}
+              </div>
+              <TrendingDownRoundedIcon className="icon chip-red chip-icon" />
             </div>
-            <TrendingDownRoundedIcon className="icon chip-red chip-icon" />
-          </div>
+          </Tooltip>
         )}
       </td>
       <td>
-        <p
-          className="coin-price name-text"
-          style={{
-            color:
-              coin.price_change_percentage_24h < 0
-                ? "var(--red)"
-                : "var(--green)",
-          }}
-        >
-          $ {coin.current_price.toLocaleString()}
-        </p>
+        <Tooltip title="Price">
+          <p
+            className="coin-price name-text"
+            style={{
+              color:
+                coin.price_change_percentage_24h < 0
+                  ? "var(--red)"
+                  : "var(--green)",
+            }}
+          >
+            $ {coin.current_price.toLocaleString()}
+          </p>
+        </Tooltip>
       </td>
       <td className="td-mkt-cap">
-        <p>${coin.total_volume.toLocaleString()}</p>
+        <Tooltip title="Total Volume">
+          <p>${coin.total_volume.toLocaleString()}</p>
+        </Tooltip>
       </td>
       <td className="td-mkt-cap">
-        <p>${coin.market_cap.toLocaleString()}</p>
+        <Tooltip title="Market Capital">
+          <p>${coin.market_cap.toLocaleString()}</p>
+        </Tooltip>
       </td>
       <td className="td-vol-cap">
-        <p>${volume}</p>
+        <Tooltip title="Volume">
+          <p>${volume}</p>
+        </Tooltip>
       </td>
     </motion.tr>
   );
