@@ -76,4 +76,12 @@ a {
   bottom: 2rem;
   border: 2px solid var(--blue);
   cursor: pointer;
+  z-index: 1000;
+}
+
+@media only screen and (max-width: 800px) {
+  .top-btn {
+    right: 0.5rem;
+    bottom: 0.5rem;
+  }
 }
