@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Info from "../components/Coin/Info/info";
 import Header from "../components/Common/Header";
 import Loading from "../components/Common/Loading/loading";
 import List from "../components/Dashboard/ListComponent/List";
@@ -21,6 +22,7 @@ function CoinPage() {
             name: response.data.name,
             symbol: response.data.symbol,
             image: response.data.image.large,
+            desc: response.data.description.en,
             price_change_percentage_24h:
               response.data.market_data.price_change_percentage_24h,
             total_volume: response.data.market_data.total_volume.usd,
@@ -38,7 +40,16 @@ function CoinPage() {
   return (
     <div>
       <Header />
-      {loading ? <Loading /> : <List coin={coin} />}
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <div className="grey-container">
+            <List coin={coin} />
+          </div>
+          <Info name={coin.name} desc={coin.desc} />
+        </>
+      )}
     </div>
   );
 }

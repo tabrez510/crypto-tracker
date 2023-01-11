@@ -80,9 +80,24 @@ a {
   z-index: 1000;
 }
 
+.grey-container {
+  width: 90%;
+  display: block;
+  background-color: var(--darkgrey);
+  margin: 0.5rem auto;
+  padding: 0rem 0.5rem;
+  border-radius: 0.8rem;
+}
+
 @media only screen and (max-width: 800px) {
   .top-btn {
     right: 0.5rem;
     bottom: 0.5rem;
+  }
+  
+  .grey-container {
+    background-color: var(--darkgrey);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.8rem;
   }
 }

@@ -43,8 +43,8 @@ export default function Tabs({ data }) {
           </div>
           <TabPanel value={"grid"}>
             <div className="grid-flex">
-              {data.map((item, i) => (
-                <Grid coin={item} key={i} delay={(i % 5) * 0.1} />
+             {data.map((item, index) => (
+                <Grid coin={item} key={index} delay={(index % 5) * 0.1} />
               ))}
             </div>
           </TabPanel>
