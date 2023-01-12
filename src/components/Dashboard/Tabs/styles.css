@@ -1,11 +1,11 @@
 .grid-flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin: 1rem 2rem;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1rem 2rem;
+}
 
 .list-flex {
   width: 80%;
@@ -16,5 +16,8 @@
 @media only screen and (max-width: 1000px) {
   .list-flex {
     width: auto;
+  }
+  .tabHeading {
+    font-size: 90% !important;
   }
 }

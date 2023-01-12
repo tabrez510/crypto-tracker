@@ -32,13 +32,23 @@ export default function Tabs({ data }) {
   });
 
   return (
-    <div>
+    <div style={{ minHeight: "90vh" }}>
       <ThemeProvider theme={theme}>
         <TabContext value={tabValue}>
           <div>
             <TabList variant="fullWidth" onChange={handleChange}>
-              <Tab label="Grid" value={"grid"} sx={style} />
-              <Tab label="List" value={"list"} sx={style} />
+              <Tab
+                label="Grid"
+                value={"grid"}
+                sx={style}
+                className="tabHeading"
+              />
+              <Tab
+                label="List"
+                value={"list"}
+                sx={style}
+                className="tabHeading"
+              />
             </TabList>
           </div>
           <TabPanel value={"grid"}>
