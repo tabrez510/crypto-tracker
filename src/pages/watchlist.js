@@ -1,10 +1,10 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Button from "../components/Common/Button/Button";
 import Footer from "../components/Common/Footer/footer";
 import Header from "../components/Common/Header";
+import TopButton from "../components/Common/TopButton/topButton";
 import Tabs from "../components/Dashboard/Tabs/tabs";
-import { DASHBOARD_API_URL } from "../constants";
+import { get100Coins } from "../functions/get100Coins";
 
 function WatchListPage() {
   const watchlist = localStorage.getItem("watchlist")
@@ -18,20 +18,14 @@ function WatchListPage() {
   }, [watchlist]);
 
   useEffect(() => {
-    axios
-      .get(DASHBOARD_API_URL)
-      .then((response) => {
-        console.log("Response Data >>>", response.data);
-        var myCoins = response.data.filter((coins) =>
-          watchlist.includes(coins.id)
-        );
-        console.log("my coins", myCoins);
-        setCoins(myCoins);
-      })
-      .catch((error) => {
-        console.log("Error>>>", error);
-      });
+    getData();
   }, []);
+
+  const getData = async () => {
+    const response = await get100Coins();
+    var myCoins = response.filter((coins) => watchlist.includes(coins.id));
+    setCoins(myCoins);
+  };
 
   return (
     <div>
@@ -62,6 +56,7 @@ function WatchListPage() {
           </div>
         )}
       </div>
+      <TopButton />
       <Footer />
     </div>
   );

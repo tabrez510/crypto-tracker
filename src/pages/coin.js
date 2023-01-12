@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LineChart from "../components/Coin/Chart";
@@ -9,10 +8,8 @@ import Footer from "../components/Common/Footer/footer";
 import Header from "../components/Common/Header";
 import Loading from "../components/Common/Loading/loading";
 import List from "../components/Dashboard/ListComponent/List";
-import { convertNumbers } from "../functions/convertNumber";
 import { getCoinData } from "../functions/getCoinData";
 import { getCoinPrices } from "../functions/getCoinPrices";
-import { getDate } from "../functions/getDate";
 import { setChartDataFunction } from "../functions/setChartData";
 import { setCoinDataFunction } from "../functions/setCoinData";
 

@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import LineChart from "../components/Coin/Chart";
 import Info from "../components/Coin/Info/info";
@@ -12,7 +11,6 @@ import List from "../components/Dashboard/ListComponent/List";
 import { get100Coins } from "../functions/get100Coins";
 import { getCoinData } from "../functions/getCoinData";
 import { getCoinPrices } from "../functions/getCoinPrices";
-import { getDate } from "../functions/getDate";
 import { setChartDataFunction } from "../functions/setChartData";
 import { setCoinDataFunction } from "../functions/setCoinData";
 
