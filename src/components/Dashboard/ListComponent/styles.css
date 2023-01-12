@@ -82,4 +82,7 @@
       margin: 0.5rem 0rem;
       gap: 0.1rem;
     }
+    .name-text {
+      font-size: 60%;
+    }
   }

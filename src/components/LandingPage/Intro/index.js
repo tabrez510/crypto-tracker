@@ -39,7 +39,9 @@ function LandingIntro() {
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.75 }}
         >
-          <Button text="Dashboard" />
+           <a href="/dashboard">
+             <Button text="Dashboard" />
+           </a>
           <RWebShare
             data={{
               text: "Crypto Dashboard made using React JS in 2022",

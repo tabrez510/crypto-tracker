@@ -258,7 +258,7 @@ function ComparePage() {
           <div className="grey-container">
             <Info name={coinData1.name} desc={coinData1.desc} />
           </div>
-          <div className="grey-container">
+          <div className="grey-container" style={{ marginBottom: "2rem" }}>
             <Info name={coinData2.name} desc={coinData2.desc} />
           </div>
         </>

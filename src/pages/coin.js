@@ -167,7 +167,7 @@ function CoinPage() {
             />
             <LineChart chartData={chartData} options={options} />
           </div>
-          <div className="grey-container">
+          <div className="grey-container" style={{ marginBottom: "2rem" }}>
             <Info name={coin.name} desc={coin.desc} />
           </div>
         </>
