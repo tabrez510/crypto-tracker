@@ -8,28 +8,31 @@ import Loading from "../components/Common/Loading/loading";
 import List from "../components/Dashboard/ListComponent/List";
 import { getCoinData } from "../functions/getCoinData";
 import { getCoinPrices } from "../functions/getCoinPrices";
-import { getDaysArray } from "../functions/getDaysArray";
+import { getDate } from "../functions/getDate";
 
 function CoinPage() {
   const { id } = useParams();
   const [coin, setCoin] = useState({});
-  const [days, setDays] = useState(90);
+  const [days, setDays] = useState(120);
   const [loading, setLoading] = useState(true);
-  const today = new Date();
-  const priorDate = new Date(new Date().setDate(today.getDate() - days));
 
   const [chartData, setChartData] = useState({
     labels: [],
-    datasets: [
-      {
-        label: "My First Dataset",
-        data: [],
-        fill: false,
-        borderColor: "#fff",
-        tension: 0.1,
-      },
-    ],
+    datasets: [{}],
   });
+
+  const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    responsive: true,
+    interaction: {
+      mode: "index",
+      intersect: false,
+    },
+  };
 
   useEffect(() => {
     if (id) {
@@ -58,17 +61,18 @@ function CoinPage() {
       setLoading(false);
     }
     if (prices) {
-      console.log("Prices", prices);
-
       setChartData({
-        labels: getDaysArray(priorDate, today),
+        labels: prices?.map((data) => getDate(data[0])),
         datasets: [
           {
-            label: "Prices",
+            label: "Price",
             data: prices?.map((data) => data[1]),
+            borderWidth: 1,
             fill: false,
-            borderColor: "#fff",
-            tension: 0.1,
+            tension: 0.25,
+            backgroundColor: "transparent",
+            borderColor: "#3a80e9",
+            pointRadius: 0,
           },
         ],
       });
@@ -85,7 +89,9 @@ function CoinPage() {
           <div className="grey-container">
             <List coin={coin} />
           </div>
-          <LineChart chartData={chartData} />
+          <div className="grey-container">
+            <LineChart chartData={chartData} options={options} />
+          </div>
           <Info name={coin.name} desc={coin.desc} />
         </>
       )}
