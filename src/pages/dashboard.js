@@ -39,12 +39,12 @@ function DashboardPage() {
     }
   };
 
+  var mybutton = document.getElementById("myBtn");
+
   function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
-
-  let mybutton = document.getElementById("myBtn");
 
   window.onscroll = function () {
     scrollFunction();
@@ -75,18 +75,19 @@ function DashboardPage() {
         <>
           <Search search={search} setSearch={setSearch} />
           <Tabs data={search ? filteredCoins : pageCoins} />
-          <div onClick={() => topFunction()} id="myBtn" className="top-btn">
-            <ArrowUpwardIcon sx={{ color: "var(--blue)" }} />
-          </div>
           {!search && (
             <PaginationComponent
               pageNumber={pageNumber}
               handleChange={handleChange}
             />
           )}
+          <Footer />
         </>
       )}
-      <Footer />
+
+      <div onClick={() => topFunction()} id="myBtn" className="top-btn">
+        <ArrowUpwardIcon sx={{ color: "var(--blue)" }} />
+      </div>
     </div>
   );
 }
