@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import "./styles.css";
-
+import BookmarkBorderRoundedIcon from "@mui/icons-material/BookmarkBorderRounded";
 import { motion } from "framer-motion";
 import Tooltip from "@mui/material/Tooltip";
 import { convertNumbers } from "../../../functions/convertNumber";
+
 function List({ coin, delay }) {
   const [volume, setVolume] = useState("");
 
@@ -30,7 +31,7 @@ function List({ coin, delay }) {
         <td className="td-name-flex">
           <div className="name-flex ">
             <Tooltip title="Symbol">
-              <p className="coin-symbol name-text">{coin.symbol}-USD</p>
+              <p className="coin-symbol name-text">{coin.symbol}</p>
             </Tooltip>
             <Tooltip title="Name">
               <p className="coin-name name-text">{coin.name}</p>
@@ -87,6 +88,11 @@ function List({ coin, delay }) {
           <Tooltip title="Volume">
             <p>${volume}</p>
           </Tooltip>
+        </td>
+        <td>
+          <div className="bookmark-icon-div">
+            <BookmarkBorderRoundedIcon className="bookmark-icon" />
+          </div>
         </td>
       </motion.tr>
     </a>

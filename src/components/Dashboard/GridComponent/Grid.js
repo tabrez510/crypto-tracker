@@ -3,6 +3,7 @@ import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import "./styles.css";
 import { motion } from "framer-motion";
+import BookmarkBorderRoundedIcon from "@mui/icons-material/BookmarkBorderRounded";
 
 function Grid({ coin, delay }) {
   return (
@@ -18,8 +19,11 @@ function Grid({ coin, delay }) {
         <div className="info-flex">
           <img src={coin.image} className="coin-logo" />
           <div className="name-flex">
-            <p className="coin-symbol">{coin.symbol}-USD</p>
+            <p className="coin-symbol">{coin.symbol}</p>
             <p className="coin-name">{coin.name}</p>
+          </div>
+          <div className="bookmark-icon-div">
+            <BookmarkBorderRoundedIcon className="bookmark-icon" />
           </div>
         </div>
         <div>
