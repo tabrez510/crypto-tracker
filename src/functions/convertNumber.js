@@ -1,4 +1,4 @@
-export function convertNumbers(number) {
+export const convertNumbers = (number) => {
     if (number) {
       if (number >= 1000 && number < 1000000) {
         return (
@@ -23,4 +23,4 @@ export function convertNumbers(number) {
         );
       }
     }
-  }
+};

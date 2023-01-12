@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import "./styles.css";
-import { convertNumbers } from "../../../functions/convertNumber";
+
 import { motion } from "framer-motion";
 import Tooltip from "@mui/material/Tooltip";
-
+import { convertNumbers } from "../../../functions/convertNumber";
 function List({ coin, delay }) {
   const [volume, setVolume] = useState("");
 
