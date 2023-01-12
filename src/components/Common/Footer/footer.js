@@ -9,7 +9,10 @@ import { RWebShare } from "react-web-share";
 function Footer() {
   return (
     <div className="footer">
-      <h2>CryptoTracker.</h2>
+      <a href="/">
+        <h2>CryptoTracker.</h2>
+      </a>
+
       <div className="socials-flex">
         <a href="/">
           <FacebookIcon className="socials-icon" />

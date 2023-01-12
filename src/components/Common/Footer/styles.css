@@ -19,7 +19,6 @@
   .socials-flex {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
     gap: 1rem;
   }
   
@@ -43,5 +42,23 @@
     }
     100% {
       background-position: 0% 50%;
+    }
+  }
+  
+  @media only screen and (max-width: 800px) {
+    .footer {
+      margin: 1rem 0.5rem;
+      border-radius: 0.5rem;
+    }
+    .footer h2 {
+      font-size: 80%;
+    }
+  
+    .socials-flex {
+      gap: 0.5rem;
+    }
+  
+    .socials-icon {
+      font-size: 1rem !important;
     }
   }

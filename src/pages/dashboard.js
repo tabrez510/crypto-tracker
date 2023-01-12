@@ -7,6 +7,7 @@ import { DASHBOARD_API_URL } from "../constants";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import Loading from "../components/Common/Loading/loading";
 import PaginationComponent from "../components/Dashboard/PaginationComponent/pagination";
+import Footer from "../components/Common/Footer/footer";
 
 function DashboardPage() {
   const [data, setData] = useState([]);
@@ -38,37 +39,37 @@ function DashboardPage() {
       });
   }, []);
 
-    function topFunction() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    }
-  
-    let mybutton = document.getElementById("myBtn");
-  
-    window.onscroll = function () {
-      scrollFunction();
-    };
-  
-    function scrollFunction() {
-      if (
-        document.body.scrollTop > 20 ||
-        document.documentElement.scrollTop > 20
-      ) {
-        mybutton.style.display = "flex";
-      } else {
-        mybutton.style.display = "none";
-      }
-    }
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
 
-    const handleChange = (event, value) => {
-      setPageNumber(value);
-      setPageCoins(data.slice((value - 1) * 10, (value - 1) * 10 + 10));
-    };
-  
+  let mybutton = document.getElementById("myBtn");
+
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      mybutton.style.display = "flex";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+  const handleChange = (event, value) => {
+    setPageNumber(value);
+    setPageCoins(data.slice((value - 1) * 10, (value - 1) * 10 + 10));
+  };
+
   return (
     <div>
       <Header />
-            {loading ? (
+      {loading ? (
         <Loading />
       ) : (
         <>
@@ -85,6 +86,7 @@ function DashboardPage() {
           )}
         </>
       )}
+      <Footer />
     </div>
   );
 }

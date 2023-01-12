@@ -5,6 +5,7 @@ import LineChart from "../components/Coin/Chart";
 import Info from "../components/Coin/Info/info";
 import SelectDays from "../components/Coin/SelectDays/selectDays";
 import TogglePrice from "../components/Coin/ToggleComponent/toggle";
+import Footer from "../components/Common/Footer/footer";
 import Header from "../components/Common/Header";
 import Loading from "../components/Common/Loading/loading";
 import List from "../components/Dashboard/ListComponent/List";
@@ -15,7 +16,7 @@ import { getDate } from "../functions/getDate";
 
 function CoinPage() {
   const { id } = useParams();
-  
+
   const [coin, setCoin] = useState({});
   const [days, setDays] = useState(120);
   const [loading, setLoading] = useState(true);
@@ -173,6 +174,7 @@ function CoinPage() {
           </div>
         </>
       )}
+      <Footer />
     </div>
   );
 }
