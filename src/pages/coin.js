@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LineChart from "../components/Coin/Chart";
 import Info from "../components/Coin/Info/info";
+import SelectDays from "../components/Coin/SelectDays/selectDays";
 import Header from "../components/Common/Header";
 import Loading from "../components/Common/Loading/loading";
 import List from "../components/Dashboard/ListComponent/List";
@@ -61,6 +62,7 @@ function CoinPage() {
       setLoading(false);
     }
     if (prices) {
+      console.log("Prices>>>", prices);
       setChartData({
         labels: prices?.map((data) => getDate(data[0])),
         datasets: [
@@ -79,6 +81,28 @@ function CoinPage() {
     }
   };
 
+  const handleDaysChange = async (event) => {
+    const prices = await getCoinPrices(id, event.target.value);
+    if (prices) {
+      setChartData({
+        labels: prices?.map((data) => getDate(data[0])),
+        datasets: [
+          {
+            label: "Price",
+            data: prices?.map((data) => data[1]),
+            borderWidth: 1,
+            fill: false,
+            tension: 0.25,
+            backgroundColor: "transparent",
+            borderColor: "#3a80e9",
+            pointRadius: 0,
+          },
+        ],
+      });
+    }
+    setDays(event.target.value);
+  };
+
   return (
     <div>
       <Header />
@@ -90,6 +114,7 @@ function CoinPage() {
             <List coin={coin} />
           </div>
           <div className="grey-container">
+            <SelectDays days={days} handleChange={handleDaysChange} />
             <LineChart chartData={chartData} options={options} />
           </div>
           <Info name={coin.name} desc={coin.desc} />
