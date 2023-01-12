@@ -1,14 +1,15 @@
 import axios from "axios";
-import { COIN_GECKO_V3 } from "../constants";
+import { DASHBOARD_API_URL } from "../constants";
 
-export const getCoinData = (id) => {
+export const get100Coins = () => {
   const data = axios
-    .get(`${COIN_GECKO_V3}/coins/${id}`)
+    .get(DASHBOARD_API_URL)
     .then((response) => {
       return response.data;
     })
     .catch((error) => {
       console.log("Error>>>", error);
     });
+
   return data;
 };

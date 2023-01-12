@@ -8,6 +8,7 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import Loading from "../components/Common/Loading/loading";
 import PaginationComponent from "../components/Dashboard/PaginationComponent/pagination";
 import Footer from "../components/Common/Footer/footer";
+import { get100Coins } from "../functions/get100Coins";
 
 function DashboardPage() {
   const [data, setData] = useState([]);
@@ -26,18 +27,17 @@ function DashboardPage() {
   });
 
   useEffect(() => {
-    axios
-      .get(DASHBOARD_API_URL)
-      .then((response) => {
-        console.log("Response Data >>>", response.data);
-        setData(response.data);
-        setLoading(false);
-        setPageCoins(response.data.slice(0, 10));
-      })
-      .catch((error) => {
-        console.log("Error>>>", error);
-      });
+    getData();
   }, []);
+
+  const getData = async () => {
+    const response = await get100Coins();
+    if (response) {
+      setData(response);
+      setLoading(false);
+      setPageCoins(response.slice(0, 10));
+    }
+  };
 
   function topFunction() {
     document.body.scrollTop = 0;
