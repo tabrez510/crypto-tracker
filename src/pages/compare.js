@@ -4,6 +4,7 @@ import LineChart from "../components/Coin/Chart";
 import Info from "../components/Coin/Info/info";
 import SelectCoin from "../components/Coin/SelectCoin/selectCoin";
 import SelectDays from "../components/Coin/SelectDays/selectDays";
+import TogglePrice from "../components/Coin/ToggleComponent/toggle";
 import Header from "../components/Common/Header";
 import Loading from "../components/Common/Loading/loading";
 import List from "../components/Dashboard/ListComponent/List";
@@ -142,7 +143,7 @@ function ComparePage() {
       labels: prices1?.map((data) => getDate(data[0])),
       datasets: [
         {
-          label: `${coin1}`,
+          label: coin1.slice(0, 1).toUpperCase() + coin1.slice(1),
           data: prices1?.map((data) => data[1]),
           borderWidth: 1,
           fill: false,
@@ -153,7 +154,7 @@ function ComparePage() {
           yAxisID: "y",
         },
         {
-          label: `${coin2}`,
+          label: coin2.slice(0, 1).toUpperCase() + coin2.slice(1),
           data: prices2?.map((data) => data[1]),
           borderWidth: 1,
           fill: false,
@@ -207,24 +208,27 @@ function ComparePage() {
     }
   };
 
+  const handlePriceChange = (event) => {
+    setPriceType(event.target.value);
+    getPrices(coin1, coin2, days, event.target.value);
+  };
+
   return (
     <>
       <Header />
       <div className="div-flex">
-        <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-          <p>Crypto 1</p>
-          <SelectCoin
-            coin={coin1}
-            handleChange={(e) => handleCoinChange(e)}
-            allCoins={allCoins.filter((coin) => coin.id != coin2)}
-          />
-          <p>Crypto 2</p>
-          <SelectCoin
-            coin={coin2}
-            handleChange={(e) => handleCoinChange(e, true)}
-            allCoins={allCoins.filter((coin) => coin.id != coin1)}
-          />
-        </div>
+        <p className="crypto-heading">Crypto 1</p>
+        <SelectCoin
+          coin={coin1}
+          handleChange={(e) => handleCoinChange(e)}
+          allCoins={allCoins.filter((coin) => coin.id != coin2)}
+        />
+        <p className="crypto-heading">Crypto 2</p>
+        <SelectCoin
+          coin={coin2}
+          handleChange={(e) => handleCoinChange(e, true)}
+          allCoins={allCoins.filter((coin) => coin.id != coin1)}
+        />
         <SelectDays
           noText={true}
           days={days}
@@ -244,7 +248,13 @@ function ComparePage() {
           <div className="grey-container">
             <List coin={coinData2} />
           </div>
-          <LineChart chartData={chartData} options={options} />
+          <div className="grey-container">
+            <TogglePrice
+              priceType={priceType}
+              handleChange={handlePriceChange}
+            />
+            <LineChart chartData={chartData} options={options} />
+          </div>
           <div className="grey-container">
             <Info name={coinData1.name} desc={coinData1.desc} />
           </div>

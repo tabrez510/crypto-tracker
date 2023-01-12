@@ -5,6 +5,7 @@ function SelectCoin({ coin, handleChange, allCoins }) {
   return (
     <div>
       <Select
+        className="select-coin"
         value={coin}
         onChange={handleChange}
         sx={{

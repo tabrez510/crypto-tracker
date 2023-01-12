@@ -87,7 +87,6 @@ function CoinPage() {
       setLoading(false);
     }
     if (prices) {
-      console.log("Prices>>>", prices);
       setChartData({
         labels: prices?.map((data) => getDate(data[0])),
         datasets: [
@@ -107,6 +106,7 @@ function CoinPage() {
   };
 
   const handleDaysChange = async (event) => {
+    setDays(event.target.value);
     const prices = await getCoinPrices(id, event.target.value, priceType);
     if (prices) {
       setChartData({
@@ -125,7 +125,6 @@ function CoinPage() {
         ],
       });
     }
-    setDays(event.target.value);
   };
 
   const handlePriceChange = async (event) => {
@@ -158,7 +157,7 @@ function CoinPage() {
       ) : (
         <>
           <div className="grey-container">
-          <List coin={coin} delay={0.5} />
+            <List coin={coin} delay={0.5} />
           </div>
           <div className="grey-container">
             <SelectDays days={days} handleChange={handleDaysChange} />

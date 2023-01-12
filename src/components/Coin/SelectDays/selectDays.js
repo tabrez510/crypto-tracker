@@ -24,6 +24,7 @@ function SelectDays({ noText, days, handleChange }) {
             },
           },
         }}
+        className="select-coin"
       >
         <MenuItem value={7}>7 Days</MenuItem>
         <MenuItem value={30}>30 Days</MenuItem>
