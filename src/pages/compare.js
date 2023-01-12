@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Info from "../components/Coin/Info/info";
 import SelectCoin from "../components/Coin/SelectCoin/selectCoin";
 import SelectDays from "../components/Coin/SelectDays/selectDays";
 import Header from "../components/Common/Header";
@@ -70,20 +71,62 @@ function ComparePage() {
     setLoading(false);
   };
 
+  const handleCoinChange = async (e, coin2) => {
+    if (!coin2) {
+      setCoin1(e.target.value);
+      const data1 = await getCoinData(e.target.value);
+      if (data1) {
+        setCoinData1({
+          id: data1.id,
+          name: data1.name,
+          symbol: data1.symbol,
+          image: data1.image.large,
+          desc: data1.description.en,
+          price_change_percentage_24h:
+            data1.market_data.price_change_percentage_24h,
+          total_volume: data1.market_data.total_volume.usd,
+          current_price: data1.market_data.current_price.usd,
+          market_cap: data1.market_data.market_cap.usd,
+        });
+      }
+    } else {
+      setCoin2(e.target.value);
+      const data2 = await getCoinData(e.target.value);
+      if (data2) {
+        setCoinData2({
+          id: data2.id,
+          name: data2.name,
+          symbol: data2.symbol,
+          image: data2.image.large,
+          desc: data2.description.en,
+          price_change_percentage_24h:
+            data2.market_data.price_change_percentage_24h,
+          total_volume: data2.market_data.total_volume.usd,
+          current_price: data2.market_data.current_price.usd,
+          market_cap: data2.market_data.market_cap.usd,
+        });
+      }
+    }
+  };
+
   return (
     <>
       <Header />
       <div className="div-flex">
-        <SelectCoin
-          coin={coin1}
-          handleChange={(e) => setCoin1(e.target.value)}
-          allCoins={allCoins.filter((coin) => coin.id != coin2)}
-        />
-        <SelectCoin
-          coin={coin2}
-          handleChange={(e) => setCoin2(e.target.value)}
-          allCoins={allCoins.filter((coin) => coin.id != coin1)}
-        />
+        <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+          <p>Crypto 1</p>
+          <SelectCoin
+            coin={coin1}
+            handleChange={(e) => handleCoinChange(e)}
+            allCoins={allCoins.filter((coin) => coin.id != coin2)}
+          />
+          <p>Crypto 2</p>
+          <SelectCoin
+            coin={coin2}
+            handleChange={(e) => handleCoinChange(e, true)}
+            allCoins={allCoins.filter((coin) => coin.id != coin1)}
+          />
+        </div>
         <SelectDays
           noText={true}
           days={days}
@@ -99,6 +142,12 @@ function ComparePage() {
           </div>
           <div className="grey-container">
             <List coin={coinData2} />
+          </div>
+          <div className="grey-container">
+            <Info name={coinData1.name} desc={coinData1.desc} />
+          </div>
+          <div className="grey-container">
+            <Info name={coinData2.name} desc={coinData2.desc} />
           </div>
         </>
       )}
