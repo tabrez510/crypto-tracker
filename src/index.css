@@ -85,7 +85,7 @@ a {
   display: block;
   background-color: var(--darkgrey);
   margin: 0.5rem auto;
-  padding: 0rem 0.5rem;
+  padding: 1rem;
   border-radius: 0.8rem;
 }
 
