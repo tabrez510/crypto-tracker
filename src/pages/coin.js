@@ -158,7 +158,7 @@ function CoinPage() {
       ) : (
         <>
           <div className="grey-container">
-            <List coin={coin} />
+          <List coin={coin} delay={0.5} />
           </div>
           <div className="grey-container">
             <SelectDays days={days} handleChange={handleDaysChange} />

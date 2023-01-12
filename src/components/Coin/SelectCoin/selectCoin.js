@@ -1,13 +1,11 @@
 import { MenuItem, Select } from "@mui/material";
 import React from "react";
-import "./styles.css";
 
-function SelectDays({ noText, days, handleChange }) {
+function SelectCoin({ coin, handleChange, allCoins }) {
   return (
-    <div className="select-div">
-       {!noText ? <p>Price Change in the last</p> : <></>}
+    <div>
       <Select
-        value={days}
+        value={coin}
         onChange={handleChange}
         sx={{
           height: "2.5rem",
@@ -25,14 +23,14 @@ function SelectDays({ noText, days, handleChange }) {
           },
         }}
       >
-        <MenuItem value={7}>7 Days</MenuItem>
-        <MenuItem value={30}>30 Days</MenuItem>
-        <MenuItem value={60}>60 Days</MenuItem>
-        <MenuItem value={90}>90 Days</MenuItem>
-        <MenuItem value={120}>120 Days</MenuItem>
+        {allCoins.map((item, index) => (
+          <MenuItem key={index} value={item.id}>
+            {item.name}
+          </MenuItem>
+        ))}
       </Select>
     </div>
   );
 }
 
-export default SelectDays;
+export default SelectCoin;
