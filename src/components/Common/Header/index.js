@@ -1,17 +1,59 @@
-import React from "react";
+import { Switch } from "@mui/material";
+import React, { useState } from "react";
 import Button from "../Button/Button";
 import MobileDrawer from "./Drawer";
 import "./styles.css";
 
 function Header() {
+  const setDark = () => {
+    localStorage.setItem("theme", "dark");
+    document.documentElement.setAttribute("data-theme", "dark");
+  };
+
+  const setLight = () => {
+    localStorage.setItem("theme", "light");
+    document.documentElement.setAttribute("data-theme", "light");
+  };
+
+  const storedTheme = localStorage.getItem("theme");
+
+  const prefersDark =
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const defaultDark =
+    storedTheme === "dark" || (storedTheme === null && prefersDark);
+
+  if (defaultDark) {
+    setDark();
+  }
+
+  const [mode, setMode] = useState(defaultDark ? true : false);
+
+  const toggleTheme = (e) => {
+    if (!mode) {
+      setDark();
+    } else {
+      setLight();
+    }
+    setMode(!mode);
+  };
+
   return (
     <div className="navbar">
       <h1 className="heading">
         <a href="/">
-            CryptoTracker<span style={{ color: "var(--blue)" }}>.</span>
+          CryptoTracker<span style={{ color: "var(--blue)" }}>.</span>
         </a>
       </h1>
       <div className="links">
+        <Switch
+          defaultChecked
+          value={mode}
+          onClick={(e) => {
+            toggleTheme();
+          }}
+        />
         <a href="/">
           <p className="link">Home</p>
         </a>
