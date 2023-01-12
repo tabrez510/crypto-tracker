@@ -48,8 +48,7 @@ function Header() {
       </h1>
       <div className="links">
         <Switch
-          defaultChecked
-          value={mode}
+          checked={!mode}
           onClick={(e) => {
             toggleTheme();
           }}
