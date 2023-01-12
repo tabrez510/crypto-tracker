@@ -6,13 +6,15 @@ import BookmarkBorderRoundedIcon from "@mui/icons-material/BookmarkBorderRounded
 import { motion } from "framer-motion";
 import Tooltip from "@mui/material/Tooltip";
 import { convertNumbers } from "../../../functions/convertNumber";
-import { removeFromWatchlist } from "../../../functions/removeFromWatchlist.js";
+import { removeFromWatchlist } from "../../../functions/removeFromWatchlist";
 import { addToWatchlist } from "../../../functions/addToWatchlist";
 import BookmarkRoundedIcon from "@mui/icons-material/BookmarkRounded";
 import IconButton from "@mui/material/IconButton";
 
 function List({ coin, delay }) {
-  const isWatchlist = localStorage.getItem("watchlist").includes(coin.id);
+  const isWatchlist = localStorage.getItem("watchlist")
+    ? localStorage.getItem("watchlist").includes(coin.id)
+    : false;
   const [volume, setVolume] = useState("");
   const [isAdded, setIsAdded] = useState(false);
 

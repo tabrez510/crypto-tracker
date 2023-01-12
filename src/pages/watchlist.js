@@ -1,11 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Button from "../components/Common/Button/Button";
 import Header from "../components/Common/Header";
 import Tabs from "../components/Dashboard/Tabs/tabs";
 import { DASHBOARD_API_URL } from "../constants";
 
 function WatchListPage() {
-  const watchlist = localStorage.getItem("watchlist").split(",");
+  const watchlist = localStorage.getItem("watchlist")
+    ? localStorage.getItem("watchlist").split(",")
+    : [];
+
   const [coins, setCoins] = useState([]);
 
   useEffect(() => {
@@ -32,7 +36,30 @@ function WatchListPage() {
     <div>
       <Header />
       <div>
-        <Tabs data={coins} />
+        {coins.length > 0 ? (
+          <Tabs data={coins} />
+        ) : (
+          <div>
+            <h1 style={{ textAlign: "center" }}>
+              Your watchlist is Currently Empty
+            </h1>
+            <p style={{ textAlign: "center", color: "var(--grey)" }}>
+              Please Add Coins in your watchlist
+            </p>
+            <div
+              style={{
+                marginTop: "2rem",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <a href="/dashboard">
+                <Button text="Dashboard" />
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -37,13 +37,13 @@ export default function Tabs({ data }) {
         <TabContext value={tabValue}>
           <div>
             <TabList variant="fullWidth" onChange={handleChange}>
-            <Tab label="Grid" value={"grid"} sx={style} />
-            <Tab label="List" value={"list"} sx={style} />
+              <Tab label="Grid" value={"grid"} sx={style} />
+              <Tab label="List" value={"list"} sx={style} />
             </TabList>
           </div>
           <TabPanel value={"grid"}>
             <div className="grid-flex">
-             {data.map((item, index) => (
+              {data.map((item, index) => (
                 <Grid coin={item} key={index} delay={(index % 5) * 0.1} />
               ))}
             </div>
@@ -51,7 +51,7 @@ export default function Tabs({ data }) {
           <TabPanel value={"list"}>
             <table className="list-flex">
               {data.map((item, i) => (
-                <List coin={item} delay={(i % 7) * 0.1} />
+                <List coin={item} key={i} delay={(i % 7) * 0.1} />
               ))}
             </table>
           </TabPanel>
