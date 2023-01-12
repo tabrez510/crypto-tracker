@@ -29,11 +29,6 @@ function ComparePage() {
   });
 
   const options = {
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
     responsive: true,
     interaction: {
       mode: "index",
@@ -106,9 +101,6 @@ function ComparePage() {
     const data1 = await getCoinData(coin1);
     const data2 = await getCoinData(coin2);
 
-    const prices1 = await getCoinPrices(coin1, days, priceType);
-    const prices2 = await getCoinPrices(coin2, days, priceType);
-
     if (data1) {
       setCoinData1({
         id: data1.id,
@@ -138,41 +130,45 @@ function ComparePage() {
         market_cap: data2.market_data.market_cap.usd,
       });
     }
-    if (prices1 && prices2) {
-      setChartData({
-        labels: prices1?.map((data) => getDate(data[0])),
-        datasets: [
-          {
-            label: "Coin 1",
-            data: prices1?.map((data) => data[1]),
-            borderWidth: 1,
-            fill: false,
-            tension: 0.25,
-            backgroundColor: "transparent",
-            borderColor: "#3a80e9",
-            pointRadius: 0,
-            yAxisID: "y",
-          },
-          {
-            label: "Coin 2",
-            data: prices2?.map((data) => data[1]),
-            borderWidth: 1,
-            fill: false,
-            tension: 0.25,
-            backgroundColor: "transparent",
-            borderColor: "#61c96f",
-            pointRadius: 0,
-            yAxisID: "y1",
-          },
-        ],
-      });
-    }
-
+    getPrices(coin1, coin2, days, priceType);
     setLoading(false);
   };
 
-  const handleCoinChange = async (e, coin2) => {
-    if (!coin2) {
+  const getPrices = async (coin1, coin2, days, priceType) => {
+    const prices1 = await getCoinPrices(coin1, days, priceType);
+    const prices2 = await getCoinPrices(coin2, days, priceType);
+
+    setChartData({
+      labels: prices1?.map((data) => getDate(data[0])),
+      datasets: [
+        {
+          label: `${coin1}`,
+          data: prices1?.map((data) => data[1]),
+          borderWidth: 1,
+          fill: false,
+          tension: 0.25,
+          backgroundColor: "transparent",
+          borderColor: "#3a80e9",
+          pointRadius: 0,
+          yAxisID: "y",
+        },
+        {
+          label: `${coin2}`,
+          data: prices2?.map((data) => data[1]),
+          borderWidth: 1,
+          fill: false,
+          tension: 0.25,
+          backgroundColor: "transparent",
+          borderColor: "#61c96f",
+          pointRadius: 0,
+          yAxisID: "y1",
+        },
+      ],
+    });
+  };
+
+  const handleCoinChange = async (e, isCoin2) => {
+    if (!isCoin2) {
       setCoin1(e.target.value);
       const data1 = await getCoinData(e.target.value);
       if (data1) {
@@ -188,6 +184,7 @@ function ComparePage() {
           current_price: data1.market_data.current_price.usd,
           market_cap: data1.market_data.market_cap.usd,
         });
+        getPrices(e.target.value, coin2, days, priceType);
       }
     } else {
       setCoin2(e.target.value);
@@ -205,6 +202,7 @@ function ComparePage() {
           current_price: data2.market_data.current_price.usd,
           market_cap: data2.market_data.market_cap.usd,
         });
+        getPrices(coin1, e.target.value, days, priceType);
       }
     }
   };
@@ -230,7 +228,10 @@ function ComparePage() {
         <SelectDays
           noText={true}
           days={days}
-          handleChange={(e) => setDays(e.target.value)}
+          handleChange={(e) => {
+            setDays(e.target.value);
+            getPrices(coin1, coin2, e.target.value, priceType);
+          }}
         />
       </div>
       {loading ? (
