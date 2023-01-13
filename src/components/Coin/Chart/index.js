@@ -61,7 +61,7 @@ function LineChart({ chartData, mutliAxis, priceType }) {
                     },
                   },
           }
-        : {},
+        : { display: false },
     },
   };
 
