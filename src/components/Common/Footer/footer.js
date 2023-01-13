@@ -10,7 +10,7 @@ function Footer() {
   return (
     <div className="footer">
       <a href="/">
-        <h2>CryptoTracker.</h2>
+        <h2 style={{ color: "#fff" }}>CryptoTracker.</h2>
       </a>
 
       <div className="socials-flex">

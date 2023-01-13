@@ -34,6 +34,7 @@ function CoinPage() {
 
   const getData = async () => {
     const data = await getCoinData(id);
+    console.log("Coin Data>>>", data);
     const prices = await getCoinPrices(id, days, priceType);
 
     if (data) {

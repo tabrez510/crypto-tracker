@@ -13,7 +13,7 @@ function PaginationComponent({ pageNumber, handleChange }) {
           color: "var(--white)",
           "& .Mui-selected , .Mui-selected:hover": {
             backgroundColor: "var(--blue) !important",
-            color: "var(--white) !important",
+            color: "#fff !important",
             borderColor: "var(--blue) !important",
           },
           "& .MuiPaginationItem-ellipsis": {
