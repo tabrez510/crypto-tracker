@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-import FacebookIcon from "@mui/icons-material/Facebook";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import EmailIcon from "@mui/icons-material/Email";
 import SendIcon from "@mui/icons-material/Send";
@@ -14,19 +14,19 @@ function Footer() {
       </a>
 
       <div className="socials-flex">
-        <a href="/">
-          <FacebookIcon className="socials-icon" />
+        <a href="https://wa.me/918507442112">
+          <WhatsAppIcon className="socials-icon" />
         </a>
-        <a href="/">
+        <a href="https://www.instagram.com/tabrez_510/">
           <InstagramIcon className="socials-icon" />
         </a>
-        <a href="mailto:avivashishta@gmail.com">
+        <a href="mailto:alamtabrez510@gmail.com">
           <EmailIcon className="socials-icon" />
         </a>
         <RWebShare
           data={{
-            text: "Crypto Dashboard made using React JS in 2022",
-            url: "https://crypto-dashboard-nov.netlify.app/",
+            text: "Crypto Dashboard made by Tabrez using React JS",
+            url: "https://crypto-dashboard-tabrez510.netlify.app/",
             title: "Crypto Dashboard",
           }}
           onClick={() => console.log("shared successfully!")}
